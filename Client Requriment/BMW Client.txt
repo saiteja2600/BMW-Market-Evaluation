@@ -1,0 +1,142 @@
+Client: Project Requirements (BMW Market Evolution 2010–2024)
+Client Name
+
+BMW Regional Strategy & Market Intelligence Team
+
+Business Problem
+
+“We have BMW sales data from 2010 to 2024, but we don’t have a single analytics view to understand:
+
+which regions are growing/declining,
+
+which models & fuel types are winning,
+
+what’s happening with pricing, mileage, engine size,
+
+and how sales performance changes year-by-year.”
+
+Project Goal
+
+Build an analytics solution that provides:
+
+Yearly trend analysis (2010–2024)
+
+Region-wise and model-wise performance
+
+Fuel + transmission mix insights
+
+Price behavior + segmentation
+
+A clean dashboard for leadership reporting and decision-making
+
+Data (Provided CSV)
+
+Columns available:
+
+Year, Region, Model
+
+Fuel_Type, Transmission, Color
+
+Engine_Size_L, Mileage_KM, Price_USD
+
+Sales_Volume, Sales_Classification (High/Low)
+
+KPI Requirements (Must Have)
+Executive KPIs (Top cards)
+
+Total Sales Volume
+
+Total Revenue (Price_USD × Sales_Volume)
+
+YoY Growth % (Sales Volume)
+
+Average Price (USD)
+
+Top Region (by sales volume)
+
+Top Model (by sales volume)
+
+Trend & Market KPIs
+
+Sales trend by year (Volume + Revenue)
+
+Region growth trend (YoY by region)
+
+Model share trend (Top models over time)
+
+Fuel type share trend (Electric vs Petrol vs Diesel vs Hybrid)
+
+Price segmentation (Low/Medium/High price band – derive from quantiles)
+
+“High vs Low” sales classification distribution by region/model
+
+Dashboard Requirements (Must Have Pages)
+Page 1 — Executive Overview
+
+KPI cards (top)
+
+Sales volume trend by year
+
+Revenue by region
+
+Top models contribution
+
+Fuel type share
+
+Page 2 — Region Deep Dive
+
+Region filters and drilldown
+
+Region → model breakdown
+
+Region → fuel mix
+
+Region YoY growth table
+
+Page 3 — Product & Pricing Insights
+
+Price vs mileage relationship
+
+Engine size vs avg price
+
+Transmission impact on avg price & sales
+
+Identify “premium + high sales” combos (model/region/fuel)
+
+Filters (Must Have)
+
+Left-side filters:
+
+Year range
+
+Region
+
+Model
+
+Fuel_Type
+
+Transmission
+
+Sales_Classification
+
+Optional: Price range, Engine size range
+
+Drilldowns (Client Wants)
+
+Click Region → see Model performance
+
+Click Model → see Fuel type + Transmission split
+
+Export filtered data as CSV
+
+Acceptance Criteria (How client will approve)
+
+Dashboard must load with full dataset and allow filtering without breaking visuals
+
+KPIs must match filtered data correctly
+
+YoY growth should not show wrong values (handle first year as “N/A”)
+
+Revenue must be calculated consistently: Price_USD * Sales_Volume
+
+Final output should be presentable for leadership
