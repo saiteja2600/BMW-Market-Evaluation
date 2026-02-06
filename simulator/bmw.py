@@ -38,11 +38,9 @@ prices = df["Price_USD"].dropna().tolist()
 sales_volumes = df["Sales_Volume"].dropna().tolist()
 sales_classifications = df["Sales_Classification"].dropna().tolist()
 def send_bmw_data():
-    event = {
-        
-        "vehicle_id": str(uuid.uuid4()),
+    row = {
         "Model": random.choice(models),
-        "Year": random.choice(years) ,
+        "Year": random.choice(years),
         "Region": random.choice(regions),
         "Color": random.choice(colors),
         "Fuel_Type": random.choice(fuel_types),
@@ -51,13 +49,30 @@ def send_bmw_data():
         "Mileage_KM": random.choice(mileages),
         "Price_USD": random.choice(prices),
         "Sales_Volume": random.choice(sales_volumes),
-        "Sales_Classification": random.choice(sales_classifications),
+        "Sales_Classification": random.choice(sales_classifications)
+    }
+    
+    event = {
+        "event_id":str(uuid.uuid4()),
+        "event_timestamp":datetime.now(ZoneInfo("Asia/Kolkata")).isoformat(),
+        "vehicle_id":str(uuid.uuid4()),
+        "model": row["Model"],
+        "year": row["Year"],
+        "region": row["Region"],
+        "color": row["Color"],
+        "fuel_type": row["Fuel_Type"],
+        "transmission": row["Transmission"],
+        "engine_size": row["Engine_Size_L"],
+        "mileage": row["Mileage_KM"],
+        "price": row["Price_USD"],
+        "sales_volume": row["Sales_Volume"],
+        "sales_classification": row["Sales_Classification"]
     }
     return event
 if __name__ == "__main__":
     while True:
         event = send_bmw_data()
-        producer.send(Event_NameSPACE, value=event)
+        producer.send(Event_NameSPACE,key=event["vehicle_id"].encode(),value=event)
         print(f"Sent event: {event}")
         time.sleep(5)
   
